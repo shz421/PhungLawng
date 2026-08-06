@@ -1156,7 +1156,7 @@ function wireEvents() {
 
 async function loadData() {
   if (!els.entryList) return;
-  const response = await fetch("../data/laymyochin.json", { cache: "no-store" });
+  const response = await fetch("data/laymyochin.json", { cache: "no-store" });
   const payload = await response.json();
   const entries = Array.isArray(payload.laymyochin) ? payload.laymyochin : [];
   state.entries = buildEntryIndex(entries);

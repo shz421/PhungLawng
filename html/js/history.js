@@ -27,7 +27,7 @@ function cleanText(value) {
 }
 
 async function loadSource() {
-  const response = await fetch("../data/history-full.txt", { cache: "no-store" });
+  const response = await fetch("data/history-full.txt", { cache: "no-store" });
   const text = await response.text();
   return text.replace(/\r/g, "");
 }

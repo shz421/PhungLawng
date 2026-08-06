@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Laymyo Sans";
-  src: url("../assets/fonts/google_sans.ttf") format("truetype");
+  src: url("assets/fonts/google_sans.ttf") format("truetype");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Laymyo Myanmar";
-  src: url("../assets/fonts/pyidaungsubold.ttf") format("truetype");
+  src: url("assets/fonts/pyidaungsubold.ttf") format("truetype");
   font-display: swap;
 }
 

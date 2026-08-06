@@ -3,7 +3,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { URL } = require("node:url");
 
-const ROOT = path.resolve(__dirname);
+const ROOT = path.join(path.resolve(__dirname), "html");
 const PORT = Number(process.env.PORT || 4173);
 
 const MIME = {
@@ -48,16 +48,16 @@ const server = http.createServer((req, res) => {
 
   const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
   let pathname = url.pathname;
-  if (pathname === "/") pathname = "/html/index.html";
+  if (pathname === "/") pathname = "/index.html";
 
   const barePage = pathname.match(/^\/([a-z-]+\.html)$/);
-  if (barePage && fs.existsSync(path.join(ROOT, "html", barePage[1]))) {
-    pathname = `/html/${barePage[1]}`;
+  if (barePage && fs.existsSync(path.join(ROOT, barePage[1]))) {
+    pathname = `/${barePage[1]}`;
   }
 
   const noExt = pathname.match(/^\/([a-z-]+)$/);
-  if (noExt && fs.existsSync(path.join(ROOT, "html", `${noExt[1]}.html`))) {
-    pathname = `/html/${noExt[1]}.html`;
+  if (noExt && fs.existsSync(path.join(ROOT, `${noExt[1]}.html`))) {
+    pathname = `/${noExt[1]}.html`;
   }
 
   const filePath = safeResolve(`.${pathname}`);
