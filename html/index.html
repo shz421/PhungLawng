@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#07111f">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="LaymyoChin Web is a responsive, local-first website built from the LaymyoChin Android app with dictionary search, lessons, quizzes, and community links.">
+  <title>LaymyoChin Web</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script defer src="../js/nav.js"></script>
+  <script defer src="../js/app.js"></script>
+</head>
+<body>
+  <div class="bg-orb bg-orb-a"></div>
+  <div class="bg-orb bg-orb-b"></div>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="LaymyoChin Web home">
+        <img src="../assets/images/logo.png" alt="" class="brand-mark">
+        <span>
+          <strong>LaymyoChin Web</strong>
+          <small>Dictionary · Learning Hub</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="dictionary">Dictionary</a>
+        <a href="history">History</a>
+        <div class="nav-menu">
+          <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="More pages">
+            <span class="nav-menu-label">More</span>
+            <span class="nav-hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+          </button>
+          <div class="nav-menu-panel" role="menu" aria-label="More pages">
+            <a href="#alphabet" role="menuitem">Learn Grammar</a>
+            <a href="conversation" role="menuitem">Basic Conversation</a>
+            <a href="categories" role="menuitem">Learn with Categories</a>
+            <a href="about" role="menuitem">About Us</a>
+          </div>
+        </div>
+        <a class="profile-link" href="profile" aria-label="Profile">
+          <img src="../assets/images/profile.png" alt="" class="profile-avatar">
+          <span>Profile</span>
+        </a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero-section reveal" id="home" aria-labelledby="hero-title">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="particle-layer" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <h1 id="hero-title">Your Learning Space</h1>
+              <p class="hero-sub lede">
+                <strong>Laymyo</strong> is a Chin language spoken in <strong>Chin State, Myanmar</strong>.
+                This website provides dictionaries, grammar, lessons, and resources to preserve and promote the Laymyo language and culture.
+              </p>
+              <div class="premium-cta-bar">
+                <p class="premium-cta-text"><span id="typewriterText"></span><span class="type-caret" aria-hidden="true"></span></p>
+                <a class="btn-premium cta-pulse premium-cta-btn" href="https://play.google.com/store/apps/details?id=chin.bk.hleihzue.yet.dictionary" target="_blank" rel="noreferrer noopener">Download Now</a>
+                <span class="premium-cta-dot" aria-hidden="true"></span>
+              </div>
+            </div>
+            <div class="hero-visual">
+              <div class="hero-art-frame hero-scene">
+                <img src="../assets/images/dailands.png" alt="LaymyoChin" class="hero-image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="alphabet">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Study area</div>
+            <h2 class="cool-heading">You Learning <span class="cool-highlight">all in one place</span> ✨</h2>
+          </div>
+        </div>
+        <div class="study-grid" id="studyGrid"></div>
+      </section>
+
+      <section class="section layout-grid reveal" id="community">
+        <article class="card content-card">
+          <div class="section-head compact">
+            <div>
+              <div class="eyebrow">Community and support</div>
+              <h2>Social links, updates, and feedback surfaces.</h2>
+            </div>
+            <p>
+              The original app exposes Facebook, Play Store, privacy policy, feedback, more-app, and help routes.
+              The web version keeps those destinations visible and safer to navigate.
+            </p>
+          </div>
+          <div class="link-grid reveal-stagger">
+            <a class="link-card" href="https://play.google.com/store/apps/details?id=chin.bk.hleihzue.yet.dictionary" target="_blank" rel="noreferrer noopener">
+              <strong>Google Play</strong>
+              <span>Open the published app listing</span>
+            </a>
+            <a class="link-card" href="https://laymyochin.wordpress.com/2022/07/30/privacy-policy/" target="_blank" rel="noreferrer noopener">
+              <strong>Privacy policy</strong>
+              <span>Read the app policy page</span>
+            </a>
+            <a class="link-card" href="https://yet-mm-dictionary.en.uptodown.com/android" target="_blank" rel="noreferrer noopener">
+              <strong>Alternative download</strong>
+              <span>External app listing used by the original code</span>
+            </a>
+          </div>
+        </article>
+
+        <aside class="card security-card" id="privacy">
+          <div class="eyebrow">Security</div>
+          <h2>Hardening choices in this web build.</h2>
+          <ul class="checklist">
+            <li>Strict CSP, no remote scripts, and no inline event handlers.</li>
+            <li>Local storage only for favorites and browsing history.</li>
+            <li>Safe link handling with `rel="noreferrer noopener"` on external targets.</li>
+            <li>Input is escaped before rendering into the page.</li>
+            <li>Static server path normalization blocks traversal.</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <strong>LaymyoChin Web</strong>
+        <p>Responsive conversion of the Android app into a cleaner, safer web experience.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#top">Back to top</a>
+        <a href="dictionary">Dictionary</a>
+      </div>
+    </footer>
+  </div>
+  <div class="floating-cta" aria-label="Quick actions">
+    <a class="floating-cta-link floating-cta-app" href="https://play.google.com/store/apps/details?id=chin.bk.hleihzue.yet.dictionary" target="_blank" rel="noreferrer noopener">
+      <span class="floating-cta-kicker">Get the app</span>
+      <strong>Install LaymyoChin</strong>
+    </a>
+    <a class="floating-cta-link floating-cta-join" href="/#community">
+      <span class="floating-cta-kicker">Join contribution</span>
+      <strong>Help improve the project</strong>
+    </a>
+  </div>
+  <div id="statusBar" class="status-bar" aria-live="polite"></div>
+</body>
+</html>
