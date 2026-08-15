@@ -4,137 +4,247 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#07111f">
+  <meta name="theme-color" content="#0b1d2b">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="LaymyoChin Web is a responsive, local-first website built from the LaymyoChin Android app with dictionary search, lessons, quizzes, and community links.">
-  <title>LaymyoChin Web</title>
+  <meta name="description" content="Laymyo — the Chin language of Chin State, Myanmar. Dictionary, grammar, history, stories, and resources to preserve our language and culture for future generations.">
+  <title>Laymyo — Chin Language</title>
   <link rel="stylesheet" href="css/styles.css">
   <script defer src="js/nav.js"></script>
   <script defer src="js/app.js"></script>
 </head>
-<body>
+<body class="home">
   <div class="bg-orb bg-orb-a"></div>
   <div class="bg-orb bg-orb-b"></div>
   <div class="shell">
-    <header class="topbar">
-      <a class="brand" href="#top" aria-label="LaymyoChin Web home">
+    <header class="topbar home-topbar">
+      <a class="brand" href="#top" aria-label="Laymyo home">
         <img src="assets/images/logo.png" alt="" class="brand-mark">
         <span>
           <strong>LMC</strong>
-          <small>Dictionary · Learning Hub</small>
+          <small>Chin Language</small>
         </span>
       </a>
-      <nav class="nav" aria-label="Primary">
+      <nav class="home-nav" aria-label="Primary">
         <a href="/">Home</a>
         <a href="dictionary">Dictionary</a>
+        <a href="categories">Grammar</a>
+        <a href="conversation">Learning</a>
         <a href="history">History</a>
-        <div class="nav-menu">
-          <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="More pages">
-            <span class="nav-menu-label">More</span>
-            <span class="nav-hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
-          </button>
-          <div class="nav-menu-panel" role="menu" aria-label="More pages">
-            <a href="#alphabet" role="menuitem">Learn Grammar</a>
-            <a href="conversation" role="menuitem">Basic Conversation</a>
-            <a href="categories" role="menuitem">Learn with Categories</a>
-            <a href="about" role="menuitem">About Us</a>
-          </div>
-        </div>
-        <a class="profile-link" href="profile" aria-label="Profile">
-          <img src="assets/images/profile.png" alt="" class="profile-avatar">
-          <span>Profile</span>
-        </a>
+        <a href="drawer">Stories</a>
+        <a href="/#resources">Resources</a>
+        <a href="about">About</a>
       </nav>
+      <div class="home-nav-actions">
+        <a class="home-icon-btn" href="dictionary" aria-label="Search the dictionary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </a>
+        <select class="home-lang" id="langSelect" aria-label="Interface language">
+          <option value="en" selected>EN</option>
+          <option value="my">မြန်မာ</option>
+          <option value="lm">Sawlai</option>
+        </select>
+        <a class="home-login" href="profile">Login</a>
+      </div>
+      <details class="home-menu">
+        <summary class="home-menu-toggle" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </summary>
+        <div class="home-menu-panel">
+          <a href="/">Home</a>
+          <a href="dictionary">Dictionary</a>
+          <a href="categories">Grammar</a>
+          <a href="conversation">Learning</a>
+          <a href="history">History</a>
+          <a href="drawer">Stories</a>
+          <a href="/#resources">Resources</a>
+          <a href="about">About</a>
+          <a href="profile">Login</a>
+        </div>
+      </details>
     </header>
 
     <main id="top">
-      <section class="hero-section reveal" id="home" aria-labelledby="hero-title">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="particle-layer" aria-hidden="true"></div>
-        <div class="hero-inner">
-          <div class="hero-grid">
-            <div class="hero-copy">
-              <h1 id="hero-title">Your Learning Space</h1>
-              <p class="hero-sub lede">
-                <strong>Laymyo</strong> is a Chin language spoken in <strong>Chin State, Myanmar</strong>.
-                This website provides dictionaries, grammar, lessons, and resources to preserve and promote the Laymyo language and culture.
-              </p>
-              <div class="premium-cta-bar">
-                <p class="premium-cta-text"><span id="typewriterText"></span><span class="type-caret" aria-hidden="true"></span></p>
-                <a class="btn-premium cta-pulse premium-cta-btn" href="https://play.google.com/store/apps/details?id=chin.bk.hleihzue.yet.dictionary" target="_blank" rel="noreferrer noopener">Download Now</a>
-                <span class="premium-cta-dot" aria-hidden="true"></span>
-              </div>
-            </div>
-            <div class="hero-visual">
-              <div class="hero-art-frame hero-scene">
-                <img src="assets/images/dailands.png" alt="LaymyoChin" class="hero-image">
-              </div>
-            </div>
+      <section class="home-hero reveal" aria-labelledby="hero-title">
+        <div class="home-hero-bg" aria-hidden="true"></div>
+        <div class="home-hero-glow" aria-hidden="true"></div>
+        <div class="home-hero-inner">
+          <p class="home-hero-eyebrow">Welcome to</p>
+          <h1 class="home-hero-title" id="hero-title">Laymyo</h1>
+          <p class="home-hero-desc">Preserving our language, culture and identity for future generations.</p>
+          <div class="premium-cta-bar">
+            <p class="premium-cta-text"><span id="typewriterText"></span><span class="type-caret" aria-hidden="true"></span></p>
+            <a class="btn-premium cta-pulse premium-cta-btn" href="https://play.google.com/store/apps/details?id=chin.bk.hleihzue.yet.dictionary" target="_blank" rel="noreferrer noopener">Download Now</a>
+            <span class="premium-cta-dot" aria-hidden="true"></span>
           </div>
         </div>
       </section>
 
-      <section class="section reveal" id="alphabet">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Study area</div>
-            <h2 class="cool-heading">You Learning <span class="cool-highlight">all in one place</span> ✨</h2>
-          </div>
+      <section class="home-features reveal" id="features" aria-labelledby="features-title">
+        <div class="feature-bar">
+          <a class="feature-bar-item reveal-stagger" href="dictionary">
+            <span class="feature-bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span>
+            <h3>Dictionary</h3>
+            <p>6,869 words across Sawlai, Burmese, and English.</p>
+          </a>
+          <a class="feature-bar-item reveal-stagger" href="categories">
+            <span class="feature-bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>
+            <h3>Grammar</h3>
+            <p>Rules, categories, and word groups from the app.</p>
+          </a>
+          <a class="feature-bar-item reveal-stagger" href="conversation">
+            <span class="feature-bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5z"></path><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"></path></svg></span>
+            <h3>Learning</h3>
+            <p>Conversation practice and daily phrase drills.</p>
+          </a>
+          <a class="feature-bar-item reveal-stagger" href="history">
+            <span class="feature-bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
+            <h3>History</h3>
+            <p>The full story, from the Lemro River to today.</p>
+          </a>
+          <a class="feature-bar-item reveal-stagger" href="drawer">
+            <span class="feature-bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></span>
+            <h3>Stories</h3>
+            <p>Proverbs, quotes, and long-form reading.</p>
+          </a>
+          <a class="feature-bar-item reveal-stagger" href="https://play.google.com/store/apps/details?id=chin.bk.hleihzue.yet.dictionary" target="_blank" rel="noreferrer noopener">
+            <span class="feature-bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></span>
+            <h3>Audio</h3>
+            <p>Pronunciation support for every word.</p>
+          </a>
         </div>
-        <div class="study-grid" id="studyGrid"></div>
       </section>
 
-      <section class="section layout-grid reveal" id="community">
-        <article class="card content-card">
-          <div class="section-head compact">
+      <section class="light-section reveal" aria-labelledby="lower-title">
+        <div class="light-section-inner">
+          <div class="section-head home-lower-head">
             <div>
-              <div class="eyebrow">Community and support</div>
-              <h2>Social links, updates, and feedback surfaces.</h2>
+              <div class="eyebrow">Latest</div>
+              <h2 id="lower-title">The language, the people, the words</h2>
             </div>
-            <p>
-              The original app exposes Facebook, Play Store, privacy policy, feedback, more-app, and help routes.
-              The web version keeps those destinations visible and safer to navigate.
-            </p>
           </div>
-          <div class="link-grid reveal-stagger">
-            <a class="link-card" href="https://play.google.com/store/apps/details?id=chin.bk.hleihzue.yet.dictionary" target="_blank" rel="noreferrer noopener">
-              <strong>Google Play</strong>
-              <span>Open the published app listing</span>
-            </a>
-            <a class="link-card" href="https://laymyochin.wordpress.com/2022/07/30/privacy-policy/" target="_blank" rel="noreferrer noopener">
-              <strong>Privacy policy</strong>
-              <span>Read the app policy page</span>
-            </a>
-            <a class="link-card" href="https://yet-mm-dictionary.en.uptodown.com/android" target="_blank" rel="noreferrer noopener">
-              <strong>Alternative download</strong>
-              <span>External app listing used by the original code</span>
-            </a>
+          <div class="lower-grid">
+            <article class="light-card latest-card">
+              <div class="light-card-head">
+                <div>
+                  <div class="eyebrow">Dictionary</div>
+                  <h3>Latest Words</h3>
+                </div>
+                <a class="text-link" href="dictionary">Open dictionary <span aria-hidden="true">→</span></a>
+              </div>
+              <div class="latest-table-wrap">
+                <table class="latest-table">
+                  <thead>
+                    <tr>
+                      <th>Sawlai</th>
+                      <th>Burmese</th>
+                      <th>English</th>
+                    </tr>
+                  </thead>
+                  <tbody id="latestWords"></tbody>
+                </table>
+              </div>
+            </article>
+            <article class="light-card about-card">
+              <div class="eyebrow">About Laymyo</div>
+              <h3>A language worth keeping</h3>
+              <p>Laymyo is a Chin language spoken in Chin State, Myanmar. This site keeps the dictionary, grammar, history, and stories of our community alive — free, local-first, and open to every speaker.</p>
+              <a class="text-link" href="about">Read our story <span aria-hidden="true">→</span></a>
+            </article>
           </div>
-        </article>
+        </div>
+      </section>
 
-        <aside class="card security-card" id="privacy">
-          <div class="eyebrow">Security</div>
-          <h2>Hardening choices in this web build.</h2>
-          <ul class="checklist">
-            <li>Strict CSP, no remote scripts, and no inline event handlers.</li>
-            <li>Local storage only for favorites and browsing history.</li>
-            <li>Safe link handling with `rel="noreferrer noopener"` on external targets.</li>
-            <li>Input is escaped before rendering into the page.</li>
-            <li>Static server path normalization blocks traversal.</li>
-          </ul>
-        </aside>
+      <section class="explore-section reveal" id="explore" aria-labelledby="explore-title">
+        <div class="explore-head">
+          <h2 id="explore-title">Explore Laymyo</h2>
+          <a class="text-link" href="about">View All <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="explore-grid">
+          <a class="explore-card reveal-stagger" href="categories">
+            <img src="assets/images/yet.png" alt="Laymyo alphabet chart" loading="lazy" decoding="async">
+            <h3>Alphabet</h3>
+            <p>Learn the Laymyo alphabet and writing system.</p>
+            <span class="explore-link">Explore <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="explore-card reveal-stagger" href="conversation">
+            <img src="assets/images/about-me.png" alt="People speaking Laymyo" loading="lazy" decoding="async">
+            <h3>Basic Phrases</h3>
+            <p>Learn useful everyday Laymyo expressions.</p>
+            <span class="explore-link">Explore <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="explore-card reveal-stagger" href="about">
+            <img src="assets/images/dailands.jpg" alt="Laymyo cultural landscape" loading="lazy" decoding="async">
+            <h3>Cultural Heritage</h3>
+            <p>Discover Laymyo traditions, culture and heritage.</p>
+            <span class="explore-link">Explore <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="explore-card reveal-stagger" href="https://play.google.com/store/apps/details?id=chin.bk.hleihzue.yet.dictionary" target="_blank" rel="noreferrer noopener">
+            <img src="assets/images/logo.png" alt="Laymyo audio library" loading="lazy" decoding="async">
+            <h3>Audio Library</h3>
+            <p>Listen to Laymyo words, phrases and pronunciation.</p>
+            <span class="explore-link">Explore <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </section>
+
+      <section class="resources-section reveal" id="resources" aria-labelledby="resources-title">
+        <div class="section-head home-resources-head">
+          <div>
+            <div class="eyebrow">Resources</div>
+            <h2 id="resources-title">Official links and downloads</h2>
+          </div>
+        </div>
+        <div class="link-grid reveal-stagger">
+          <a class="link-card" href="https://play.google.com/store/apps/details?id=chin.bk.hleihzue.yet.dictionary" target="_blank" rel="noreferrer noopener">
+            <strong>Google Play</strong>
+            <span>Get the full LaymyoChin app on Android</span>
+          </a>
+          <a class="link-card" href="https://laymyochin.wordpress.com/2022/07/30/privacy-policy/" target="_blank" rel="noreferrer noopener">
+            <strong>Privacy policy</strong>
+            <span>How your data is handled</span>
+          </a>
+          <a class="link-card" href="https://yet-mm-dictionary.en.uptodown.com/android" target="_blank" rel="noreferrer noopener">
+            <strong>Alternative download</strong>
+            <span>Another official listing for the app</span>
+          </a>
+        </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div>
-        <strong>LMC</strong>
-        <p>Responsive conversion of the Android app into a cleaner, safer web experience.</p>
+    <footer class="footer home-footer">
+      <div class="home-footer-brand">
+        <a class="brand" href="#top" aria-label="Laymyo home">
+          <img src="assets/images/logo.png" alt="" class="brand-mark">
+          <span>
+            <strong>LMC</strong>
+            <small>Chin Language</small>
+          </span>
+        </a>
+        <p>Preserving our language, culture and identity for future generations.</p>
       </div>
-      <div class="footer-links">
-        <a href="#top">Back to top</a>
-        <a href="dictionary">Dictionary</a>
+      <div class="home-footer-cols">
+        <div>
+          <strong>About</strong>
+          <a href="about">Our story</a>
+          <a href="/#resources">Resources</a>
+        </div>
+        <div>
+          <strong>Support</strong>
+          <a href="https://laymyochin.wordpress.com/2022/07/30/privacy-policy/" target="_blank" rel="noreferrer noopener">Privacy policy</a>
+          <a href="https://laymyochin.wordpress.com" target="_blank" rel="noreferrer noopener">Community blog</a>
+        </div>
+      </div>
+      <div class="home-footer-social">
+        <a class="home-social-link" href="https://laymyochin.wordpress.com" target="_blank" rel="noreferrer noopener" aria-label="Community blog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </a>
+        <a class="home-social-link" href="https://play.google.com/store/apps/details?id=chin.bk.hleihzue.yet.dictionary" target="_blank" rel="noreferrer noopener" aria-label="Google Play">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><polyline points="15 9 19 9 19 15 15 15"></polyline></svg>
+        </a>
+        <a class="home-social-link" href="https://yet-mm-dictionary.en.uptodown.com/android" target="_blank" rel="noreferrer noopener" aria-label="Alternative download">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        </a>
       </div>
     </footer>
   </div>
@@ -143,7 +253,7 @@
       <span class="floating-cta-kicker">Get the app</span>
       <strong>Install LaymyoChin</strong>
     </a>
-    <a class="floating-cta-link floating-cta-join" href="/#community">
+    <a class="floating-cta-link floating-cta-join" href="/#resources">
       <span class="floating-cta-kicker">Join contribution</span>
       <strong>Help improve the project</strong>
     </a>

@@ -1,0 +1,8 @@
+name = "laymyo"
+pages_build_output_dir = "html"
+compatibility_date = "2026-02-12"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "laymyo_dictionary"
+database_id = "338ffed2-e053-4ed4-9597-06c43cec05fe"

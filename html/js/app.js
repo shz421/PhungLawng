@@ -227,6 +227,34 @@ function renderPoints() {
   els.heroPoints.innerHTML = points.map((point) => `<span class="pill">${escapeHtml(point)}</span>`).join("");
 }
 
+async function renderLatestWords() {
+  if (!els.latestWords) return;
+  try {
+    const response = await fetch("/api/words", { cache: "no-store" });
+    const payload = await response.json();
+    const entries = Array.isArray(payload.laymyochin) ? payload.laymyochin : [];
+    const seen = new Set();
+    const rows = [];
+    for (const entry of entries) {
+      const key = normalize(entry.Sawlai);
+      if (!key || seen.has(key)) continue;
+      seen.add(key);
+      rows.push(entry);
+      if (rows.length >= 6) break;
+    }
+    if (!rows.length) return;
+    els.latestWords.innerHTML = rows.map((entry) => `
+      <tr>
+        <td><a href="dictionary">${escapeHtml(entry.Sawlai)}</a></td>
+        <td>${escapeHtml(entry.Burmese)}</td>
+        <td>${escapeHtml(entry.Us)}</td>
+      </tr>
+    `).join("");
+  } catch {
+    els.latestWords.innerHTML = `<tr><td colspan="3">Dictionary data is not available right now.</td></tr>`;
+  }
+}
+
 function startSearchTypewriter() {
   const el = $("searchInput");
   if (!el) return;
@@ -307,10 +335,12 @@ function startTypewriter() {
 }
 
 function setActiveNav(targetId) {
-  const targetHref = targetId === "dictionary" ? "dictionary.html" : `#${targetId}`;
-  document.querySelectorAll(".nav a").forEach((link) => {
+  const isDict = targetId === "dictionary";
+  document.querySelectorAll("nav a").forEach((link) => {
     const href = link.getAttribute("href");
-    const active = href === targetHref || (targetId === "dictionary" && href === "#dictionary");
+    const active = isDict
+      ? href === "dictionary" || href === "dictionary.html"
+      : href === `#${targetId}` || href === `/#${targetId}`;
     if (active) {
       link.setAttribute("aria-current", "page");
     } else {
@@ -1065,6 +1095,12 @@ function wireEvents() {
     });
   }
 
+  if (els.langSelect) {
+    els.langSelect.addEventListener("change", () => {
+      window.location.href = "dictionary";
+    });
+  }
+
   if (els.translateBtn && els.sourceText && els.translationOutput) {
     els.translateBtn.addEventListener("click", performTranslation);
   }
@@ -1215,8 +1251,11 @@ function init() {
   els.clearFavorites = $("clearFavorites");
   els.clearHistory = $("clearHistory");
   els.statusBar = $("statusBar");
+  els.latestWords = $("latestWords");
+  els.langSelect = $("langSelect");
 
   renderPoints();
+  renderLatestWords();
   startTypewriter();
   startSearchTypewriter();
   renderModules();

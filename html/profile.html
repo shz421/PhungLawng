@@ -17,35 +17,51 @@
   <div class="bg-orb bg-orb-a"></div>
   <div class="bg-orb bg-orb-b"></div>
   <div class="shell">
-    <header class="topbar">
-      <a class="brand" href="/" aria-label="LaymyoChin Web home">
+        <header class="topbar home-topbar">
+      <a class="brand" href="/" aria-label="Laymyo home">
         <img src="assets/images/logo.png" alt="" class="brand-mark">
         <span>
           <strong>LMC</strong>
-          <small>Dictionary · Learning Hub</small>
+          <small>Chin Language</small>
         </span>
       </a>
-      <nav class="nav" aria-label="Primary">
+      <nav class="home-nav" aria-label="Primary">
         <a href="/">Home</a>
         <a href="dictionary">Dictionary</a>
+        <a href="categories">Grammar</a>
+        <a href="conversation">Learning</a>
         <a href="history">History</a>
-        <div class="nav-menu">
-          <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="More pages">
-            <span class="nav-menu-label">More</span>
-            <span class="nav-hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
-          </button>
-          <div class="nav-menu-panel" role="menu" aria-label="More pages">
-            <a href="/#alphabet" role="menuitem">Learn Grammar</a>
-            <a href="conversation" role="menuitem">Basic Conversation</a>
-            <a href="categories" role="menuitem">Learn with Categories</a>
-            <a href="about" role="menuitem">About Us</a>
-          </div>
-        </div>
-        <a class="profile-link" href="profile" aria-label="Profile">
-          <img src="assets/images/profile.png" alt="" class="profile-avatar">
-          <span>Profile</span>
-        </a>
+        <a href="drawer">Stories</a>
+        <a href="/#resources">Resources</a>
+        <a href="about">About</a>
       </nav>
+      <div class="home-nav-actions">
+        <a class="home-icon-btn" href="dictionary" aria-label="Search the dictionary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </a>
+        <select class="home-lang" id="langSelect" aria-label="Interface language">
+          <option value="en" selected>EN</option>
+          <option value="my">မြန်မာ</option>
+          <option value="lm">Sawlai</option>
+        </select>
+        <a class="home-login" href="profile" aria-current="page">Login</a>
+      </div>
+      <details class="home-menu">
+        <summary class="home-menu-toggle" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </summary>
+        <div class="home-menu-panel">
+          <a href="/">Home</a>
+          <a href="dictionary">Dictionary</a>
+          <a href="categories">Grammar</a>
+          <a href="conversation">Learning</a>
+          <a href="history">History</a>
+          <a href="drawer">Stories</a>
+          <a href="/#resources">Resources</a>
+          <a href="about">About</a>
+          <a href="profile" aria-current="page">Login</a>
+        </div>
+      </details>
     </header>
 
     <main id="top">

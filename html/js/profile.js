@@ -47,7 +47,7 @@
   }
 
   async function loadData() {
-    const res = await fetch("data/laymyochin.json", { cache: "no-store" });
+    const res = await fetch("/api/words", { cache: "no-store" });
     const payload = await res.json();
     return Array.isArray(payload.laymyochin) ? payload.laymyochin : [];
   }
