@@ -11,6 +11,7 @@ export default {
         return Response.json({ laymyochin: [], error: String(error) }, { status: 500 });
       }
     }
-    return fetch(request);
+    url.host = "laymyo-api.pages.dev";
+    return fetch(url, request);
   },
 };
