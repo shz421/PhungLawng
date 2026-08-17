@@ -558,6 +558,13 @@ function buildEntryIndex(entries) {
   }));
 }
 
+function shuffleEntries() {
+  for (let i = state.entries.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [state.entries[i], state.entries[j]] = [state.entries[j], state.entries[i]];
+  }
+}
+
 function matchesFilter(entry) {
   if (state.filter === "all") return true;
   if (state.filter === "saved") return state.favorites.includes(entry._id);
@@ -1077,6 +1084,14 @@ function wireEvents() {
       await submitEditForm(form);
     });
 
+  if (els.shuffleBtn) {
+    els.shuffleBtn.addEventListener("click", () => {
+      shuffleEntries();
+      state.page = 1;
+      renderDictionary();
+    });
+  }
+
     document.addEventListener("click", async (event) => {
       const mini = event.target.closest("[data-mini-entry]");
       if (!mini) return;
@@ -1196,6 +1211,7 @@ async function loadData() {
   const payload = await response.json();
   const entries = Array.isArray(payload.laymyochin) ? payload.laymyochin : [];
   state.entries = buildEntryIndex(entries);
+  shuffleEntries();
   renderStats();
   renderDictionary();
   renderSideLists();
@@ -1235,6 +1251,7 @@ function init() {
   els.filterChips = $("filterChips");
   els.resultsSummary = $("resultsSummary");
   els.loadMore = $("loadMore");
+  els.shuffleBtn = $("shuffleBtn");
   els.entryList = $("entryList");
   els.editDialog = $("editDialog");
   els.favoritesList = $("favoritesList");
