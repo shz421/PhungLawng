@@ -2,4 +2,4 @@ server.err.log
 server.out.log
 node_modules/
 .wrangler/
-html/too.html
+html/love.html
