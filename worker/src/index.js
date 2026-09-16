@@ -1,4 +1,16 @@
-import { listWords, recordRead } from "./handlers.js";
+import { getPage, listReads, listWords, recordRead } from "./handlers.js";
+import { renderStats } from "./stats.js";
+
+function cookieValue(request, name) {
+  const header = request.headers.get("Cookie") || "";
+  for (const part of header.split(";")) {
+    const trimmed = part.trim();
+    const split = trimmed.indexOf("=");
+    if (split === -1) continue;
+    if (trimmed.slice(0, split) === name) return trimmed.slice(split + 1);
+  }
+  return "";
+}
 
 export default {
   async fetch(request, env) {
@@ -21,6 +33,44 @@ export default {
         return Response.json({ ok: true });
       } catch (error) {
         return Response.json({ error: String(error) }, { status: 400 });
+      }
+    }
+
+    if (url.pathname === "/love/stats" || url.pathname === "/love/stats/") {
+      const provided = url.searchParams.get("key") || cookieValue(request, "lmc_stats");
+      if (!env.STATS_KEY || provided !== env.STATS_KEY) {
+        return new Response("Not found", { status: 404 });
+      }
+      try {
+        const rows = await listReads(env.LMC, "love", url.searchParams.get("limit"));
+        const headers = {
+          "Content-Type": "text/html; charset=utf-8",
+          "Cache-Control": "no-store",
+          "X-Robots-Tag": "noindex, nofollow",
+        };
+        if (url.searchParams.get("key")) {
+          headers["Set-Cookie"] =
+            "lmc_stats=" + env.STATS_KEY + "; HttpOnly; Secure; SameSite=Strict; Path=/love/stats; Max-Age=2592000";
+        }
+        return new Response(renderStats(rows), { headers });
+      } catch (error) {
+        return new Response(String(error), { status: 500 });
+      }
+    }
+
+    if (url.pathname === "/love" || url.pathname === "/love/") {
+      try {
+        const page = await getPage(env.LMC, "love");
+        if (!page) return new Response("Not found", { status: 404 });
+        return new Response(page.Html, {
+          headers: {
+            "Content-Type": "text/html; charset=utf-8",
+            "Cache-Control": "no-store",
+            "X-Robots-Tag": "noindex, nofollow",
+          },
+        });
+      } catch (error) {
+        return new Response(String(error), { status: 500 });
       }
     }
 
