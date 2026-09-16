@@ -4,7 +4,8 @@ compatibility_date = "2026-08-15"
 
 routes = [
   { pattern = "laymyo.com/*", zone_id = "0df99945c47ccd43dc6e55c95cbd26ab" },
-  { pattern = "*.laymyo.com/*", zone_id = "0df99945c47ccd43dc6e55c95cbd26ab" }
+  { pattern = "*.laymyo.com/*", zone_id = "0df99945c47ccd43dc6e55c95cbd26ab" },
+  { pattern = "www.laymyo.com", custom_domain = true }
 ]
 
 [[d1_databases]]
