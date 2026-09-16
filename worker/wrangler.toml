@@ -1,0 +1,13 @@
+name = "laymyo-api"
+main = "src/index.js"
+compatibility_date = "2026-08-15"
+
+routes = [
+  { pattern = "laymyo.com/*", zone_id = "0df99945c47ccd43dc6e55c95cbd26ab" },
+  { pattern = "*.laymyo.com/*", zone_id = "0df99945c47ccd43dc6e55c95cbd26ab" }
+]
+
+[[d1_databases]]
+binding = "LMC"
+database_name = "laymyo_dictionary"
+database_id = "338ffed2-e053-4ed4-9597-06c43cec05fe"

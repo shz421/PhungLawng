@@ -1084,14 +1084,6 @@ function wireEvents() {
       await submitEditForm(form);
     });
 
-  if (els.shuffleBtn) {
-    els.shuffleBtn.addEventListener("click", () => {
-      shuffleEntries();
-      state.page = 1;
-      renderDictionary();
-    });
-  }
-
     document.addEventListener("click", async (event) => {
       const mini = event.target.closest("[data-mini-entry]");
       if (!mini) return;
@@ -1251,7 +1243,6 @@ function init() {
   els.filterChips = $("filterChips");
   els.resultsSummary = $("resultsSummary");
   els.loadMore = $("loadMore");
-  els.shuffleBtn = $("shuffleBtn");
   els.entryList = $("entryList");
   els.editDialog = $("editDialog");
   els.favoritesList = $("favoritesList");

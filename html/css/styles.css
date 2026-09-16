@@ -3406,3 +3406,42 @@ body.home .premium-cta-text {
     font-size: 1.05rem;
   }
 }
+
+.letter-shell {
+  padding: clamp(28px, 7vw, 88px) 18px clamp(56px, 12vw, 140px);
+}
+
+.letter-body {
+  max-width: 68ch;
+  margin: 0 auto;
+  font-family: "Laymyo Myanmar", "Laymyo Sans", "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 2.15;
+  color: var(--soft);
+  overflow-wrap: anywhere;
+}
+
+.letter-body p {
+  margin: 0 0 1.6em;
+}
+
+.letter-body p:last-child {
+  margin-bottom: 0;
+}
+
+.letter-body strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.letter-body em {
+  color: var(--accent-2);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .letter-body {
+    font-size: 1rem;
+    line-height: 2.05;
+  }
+}
