@@ -1,4 +1,4 @@
-import { getPage, listReads, listWords, recordRead } from "./handlers.js";
+import { getPage, listReads, listReplies, listWords, recordRead, recordReply } from "./handlers.js";
 import { renderStats } from "./stats.js";
 
 function cookieValue(request, name) {
@@ -36,13 +36,28 @@ export default {
       }
     }
 
+    if (url.pathname === "/api/reply") {
+      if (request.method !== "POST") {
+        return Response.json({ error: "Method not allowed" }, { status: 405 });
+      }
+      try {
+        await recordReply(env.LMC, request.cf || {}, await request.json());
+        return Response.json({ ok: true });
+      } catch (error) {
+        return Response.json({ error: String(error) }, { status: 400 });
+      }
+    }
+
     if (url.pathname === "/love/stats" || url.pathname === "/love/stats/") {
       const provided = url.searchParams.get("key") || cookieValue(request, "lmc_stats");
       if (!env.STATS_KEY || provided !== env.STATS_KEY) {
         return new Response("Not found", { status: 404 });
       }
       try {
-        const rows = await listReads(env.LMC, "love", url.searchParams.get("limit"));
+        const [rows, replies] = await Promise.all([
+          listReads(env.LMC, "love", url.searchParams.get("limit")),
+          listReplies(env.LMC, "love"),
+        ]);
         const headers = {
           "Content-Type": "text/html; charset=utf-8",
           "Cache-Control": "no-store",
@@ -52,7 +67,7 @@ export default {
           headers["Set-Cookie"] =
             "lmc_stats=" + env.STATS_KEY + "; HttpOnly; Secure; SameSite=Strict; Path=/love/stats; Max-Age=2592000";
         }
-        return new Response(renderStats(rows), { headers });
+        return new Response(renderStats(rows, replies), { headers });
       } catch (error) {
         return new Response(String(error), { status: 500 });
       }

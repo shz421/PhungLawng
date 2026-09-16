@@ -3445,3 +3445,63 @@ body.home .premium-cta-text {
     line-height: 2.05;
   }
 }
+
+.letter-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-top: clamp(40px, 9vw, 84px);
+}
+
+.letter-choice {
+  font-family: "Laymyo Myanmar", "Laymyo Sans", "Segoe UI", sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.9;
+  padding: 12px 30px;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, opacity 0.25s ease, transform 0.15s ease;
+}
+
+.letter-choice:hover {
+  border-color: rgba(65, 213, 255, 0.55);
+  background: rgba(65, 213, 255, 0.1);
+}
+
+.letter-choice:active {
+  transform: translateY(1px);
+}
+
+.letter-choice:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.letter-choice.is-chosen {
+  color: var(--accent-2);
+  border-color: var(--accent-2);
+  background: rgba(255, 184, 77, 0.14);
+}
+
+.letter-choices.is-answered .letter-choice:not(.is-chosen) {
+  opacity: 0.32;
+}
+
+.letter-choice:disabled {
+  cursor: default;
+}
+
+@media (max-width: 600px) {
+  .letter-choices {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .letter-choice {
+    font-size: 1rem;
+  }
+}
