@@ -1,6 +1,10 @@
 import { getPage, listReads, listReplies, listWords, recordRead, recordReply } from "./handlers.js";
 import { renderStats } from "./stats.js";
 
+function untracked(html) {
+  return html.replace(/[ \t]*<script[^>]*\bsrc="js\/read-track\.js"[^>]*><\/script>\r?\n?/g, "");
+}
+
 function cookieValue(request, name) {
   const header = request.headers.get("Cookie") || "";
   for (const part of header.split(";")) {
@@ -77,7 +81,8 @@ export default {
       try {
         const page = await getPage(env.LMC, "love");
         if (!page) return new Response("Not found", { status: 404 });
-        return new Response(page.Html, {
+        const peek = url.searchParams.get("peek") === "1";
+        return new Response(peek ? untracked(page.Html) : page.Html, {
           headers: {
             "Content-Type": "text/html; charset=utf-8",
             "Cache-Control": "no-store",

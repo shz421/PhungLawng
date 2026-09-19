@@ -21,6 +21,10 @@ function bar(percent) {
   return `<span class="bar"><span style="width:${width}%"></span></span>`;
 }
 
+function jump(paragraph) {
+  return `https://laymyo.com/love?peek=1#p${paragraph}`;
+}
+
 function place(row) {
   const total = Number(row.Paragraphs) || 0;
   const last = Number(row.LastParagraph) || 0;
@@ -28,8 +32,8 @@ function place(row) {
   if (!total) return `<span class="muted">no position</span>`;
   const reached = row.ReachedEnd
     ? `<span class="good">read to the end</span>`
-    : `furthest <a href="https://laymyo.com/love#p${max}">&sect;${max}</a> of ${total}`;
-  const stopped = last && last !== max ? ` &middot; last seen at <a href="https://laymyo.com/love#p${last}">&sect;${last}</a>` : "";
+    : `furthest <a href="${jump(max)}">&sect;${max}</a> of ${total}`;
+  const stopped = last && last !== max ? ` &middot; last seen at <a href="${jump(last)}">&sect;${last}</a>` : "";
   return `${reached}${stopped}`;
 }
 
@@ -55,32 +59,9 @@ function answer(replies) {
   </section>`;
 }
 
-function summary(rows, replies) {
-  const sessions = rows.length;
-  const readers = new Set(rows.map((r) => r.VisitorId).filter(Boolean)).size;
-  const finished = rows.filter((r) => r.ReachedEnd).length;
-  const percents = rows.map((r) => Number(r.MaxPercent) || 0);
-  const avgPercent = sessions ? Math.round(percents.reduce((a, b) => a + b, 0) / sessions) : 0;
-  const times = rows.map((r) => Number(r.SecondsRead) || 0);
-  const avgTime = sessions ? Math.round(times.reduce((a, b) => a + b, 0) / sessions) : 0;
-  const fmt = (s) => (s >= 60 ? `${Math.floor(s / 60)}m ${s % 60}s` : `${s}s`);
-  return [
-    ["Sessions", sessions],
-    ["Readers", readers],
-    ["Read to end", `${finished}`],
-    ["Answered", replies.length],
-    ["Average read", `${avgPercent}%`],
-    ["Average time", fmt(avgTime)],
-  ];
-}
-
 export function renderStats(rows, replies) {
   const list = Array.isArray(replies) ? replies : [];
   const answered = new Set(list.map((r) => r.VisitorId).filter(Boolean));
-
-  const cards = summary(rows, list)
-    .map(([label, value]) => `<div class="card"><span class="k">${esc(label)}</span><span class="v">${esc(value)}</span></div>`)
-    .join("");
 
   const body = rows.length
     ? rows
@@ -123,10 +104,6 @@ h1 { font-size: 22px; margin: 0 0 4px }
 .answer-older { margin: 8px 0 0; padding-left: 20px; color: #b9c9de; font-size: 13px }
 .answer-older li { margin-top: 4px }
 .answer-older strong { font-family: "Laymyo Myanmar", "Myanmar Text", "Padauk", system-ui, sans-serif; font-weight: 400; color: #e6edf7 }
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 28px }
-.card { background: #0d1b2e; border: 1px solid #1c2f4a; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px }
-.card .k { color: #8ba0bd; font-size: 12px; text-transform: uppercase; letter-spacing: .06em }
-.card .v { font-size: 24px; font-weight: 600 }
 table { width: 100%; border-collapse: collapse; background: #0d1b2e; border: 1px solid #1c2f4a; border-radius: 12px; overflow: hidden }
 th, td { text-align: left; padding: 11px 13px; border-bottom: 1px solid #16263d; vertical-align: middle }
 th { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #8ba0bd; font-weight: 600; background: #0a1526 }
@@ -152,9 +129,8 @@ a:hover { text-decoration: underline }
 <body>
 <main>
   <h1>Reading activity</h1>
-  <p class="sub">laymyo.com/love &middot; &sect; links jump straight to that paragraph in the letter</p>
+  <p class="sub">laymyo.com/love &middot; &sect; links jump straight to that paragraph &mdash; viewing them records nothing</p>
   ${answer(list)}
-  <section class="cards">${cards}</section>
   <table>
     <thead>
       <tr><th>Started</th><th>Location</th><th>Device</th><th>Read</th><th>Where they got to</th><th>Time</th></tr>
